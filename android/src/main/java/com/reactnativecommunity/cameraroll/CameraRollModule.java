@@ -77,8 +77,7 @@ public class CameraRollModule extends ReactContextBaseJavaModule {
     Images.Media.DATE_TAKEN,
     MediaStore.MediaColumns.WIDTH,
     MediaStore.MediaColumns.HEIGHT,
-    Images.Media.LONGITUDE,
-    Images.Media.LATITUDE,
+  
     MediaStore.MediaColumns.DATA
   };
 
@@ -585,12 +584,7 @@ public class CameraRollModule extends ReactContextBaseJavaModule {
         float[] imageCoordinates = new float[2];
         boolean hasCoordinates = exif.getLatLong(imageCoordinates);
         if (hasCoordinates) {
-          double longitude = imageCoordinates[1];
-          double latitude = imageCoordinates[0];
-          WritableMap location = new WritableNativeMap();
-          location.putDouble("longitude", longitude);
-          location.putDouble("latitude", latitude);
-          node.putMap("location", location);
+         
         }
       } catch (IOException e) {
         FLog.e(ReactConstants.TAG, "Could not read the metadata", e);
